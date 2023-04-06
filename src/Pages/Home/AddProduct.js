@@ -4,30 +4,17 @@ import { useForm } from 'react-hook-form';
 function AddProduct() {
 
   const { register, handleSubmit, reset } = useForm();
-  const imageHostKey = process.env.REACT_APP_imgbb_api_key;
 
   const handleAddProduct = data => {
-    const image = data.image[0];
-    const formData = new FormData();
-    formData.append('image', image);
-    const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
-    fetch(url, {
-      method: 'POST',
-      body: formData
-    })
-      .then(res => res.json())
-      .then(imageData => {
-        if (imageData.success) {
+ 
           const product = {
             name: data.name,
             price: data.price,
-            category: data.category,
-            minOrder: data.minOrder,
-            picture: imageData.data.url,
+            image: data.image,
             description: data.description
           }
 
-          fetch('https://daily-needs-server.vercel.app/api/products', {
+          fetch('https://microdeft.rifatewu.com/products/add', {
             method: 'POST',
             headers: {
               'content-type': 'application/json'
@@ -40,7 +27,6 @@ function AddProduct() {
                 reset()
               }
             })
-        }
       })
   }
 
