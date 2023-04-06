@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Product from './Product';
+import AddProduct from './AddProduct';
 
 function Products() {
     const [products, setProducts] = useState([]);
@@ -27,7 +28,9 @@ function Products() {
                     }
                 </div>
             </div>
-            <div className='w-80'>Add new product</div>
+            <div className='w-80'>
+                <AddProduct />
+            </div>
         </section>
     )
 }
