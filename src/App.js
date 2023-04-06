@@ -1,8 +1,12 @@
+import { RouterProvider } from "react-router-dom";
+import router from "./Routes/Routes";
 
 
 function App() {
   return (
-    <h1>Shopping Corner</h1>
+    <div>
+      <RouterProvider router={router} />
+    </div>
   );
 }
 
